@@ -5,8 +5,9 @@ declare(strict_types=1);
 Crea un array, afegeix-li 5 nombres enters i després mostrals per pantalla d’un en un. */
 
 $nums = [1, 2, 3, 4, 5];
-for ($i = 0; $i < count($nums); $i++) {
-    echo $nums[$i] . "\n";
+
+foreach ($nums as $num) {
+    echo $num . PHP_EOL;
 }
 
 /* Exercici 2
@@ -15,26 +16,19 @@ Mostrar per pantalla la mida de l’array anterior i posteriorment elimina un el
 
 $X = [10, 20, 30, 40, 50, 60]; // Corregido a valores enteros
 
-echo "Mida inicial de l'array: " . count($X) . "\n";
+echo "Mida inicial de l'array: " . count($X) . PHP_EOL;
 
 unset($X[2]);
 $X = array_values($X); 
 
-echo "Mida final de l'array: " . count($X) . "\n";
+echo "Mida final de l'array: " . count($X) . PHP_EOL;
 
 /* Exercici 3
 Crea una funció que rebi com a paràmetres un array de paraules i un caràter. La funció ens retorna true si totes les paraules de l’array tenen el caràcter passat com a segon paràmetre. */
 
 function checkCharacter(array $words, string $char): bool {
     foreach ($words as $word) {
-        $found = false; 
-        for ($i = 0; $i < strlen($word); $i++) { 
-            if ($word[$i] === $char) {
-                $found = true; 
-                break; 
-            }
-        }
-        if (!$found) {
+        if (stripos($word, $char) === false) {
             return false; 
         }
     }
@@ -45,7 +39,7 @@ $words = ["hola", "Php", "Html"];
 $character = "h";
 
 $result = checkCharacter($words, $character);
-echo ($result ? "true" : "false") . "\n";
+echo ($result ? "true" : "false") . PHP_EOL;
 
 /* Exercici 4
 Fes un array associatiu que representi informació de tu mateix/a. En concret ha d’incloure:
@@ -62,7 +56,7 @@ $selfInfo = [
 ];
 
 foreach ($selfInfo as $key => $value) {
-    echo ($key) . ": " . $value . "\n";
+    echo ($key) . ": " . $value . PHP_EOL;
 }
 
 ?>
